@@ -1,0 +1,8 @@
+<div class="list-group">
+  <app-recipe-item
+  *ngFor="let recipeEle of recipes"
+  [recipe]="recipeEle"
+  (outRecipeClicked_1)="getRecipeClicked_1(recipeEle)"
+  >
+  </app-recipe-item>
+</div>

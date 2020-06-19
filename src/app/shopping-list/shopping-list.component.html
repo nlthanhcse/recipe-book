@@ -1,0 +1,14 @@
+<app-shopping-edit (outAddIngredientClicked)="ingredients.push($event)"></app-shopping-edit>
+<hr>
+<div class="row my-1">
+  <div class="col-md-12">
+    <div class="list-group">
+      <a href="#"
+         class="list-group-item list-group-item-action"
+         *ngFor="let ingredient of ingredients"
+      >
+        <span>{{ ingredient.name }} ({{ ingredient.amount }})</span>
+      </a>
+    </div>
+  </div>
+</div>

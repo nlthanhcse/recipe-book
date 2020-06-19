@@ -1,0 +1,18 @@
+<div class="row my-1">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="name">Ingredient name</label>
+      <input type="text" id="name" class="form-control" #ingredient_name_input>
+    </div>
+    <div class="form-group">
+      <label for="amount">Ingredient amount</label>
+      <input type="text" id="amount" class="form-control" #ingredient_amount_input>
+    </div>
+  </div>
+  <div class="col-md-12 text-center">
+    <button class="btn btn-success mx-1" (click)="addIngredientClicked()">Add</button>
+    <button class="btn btn-warning mx-1">Edit</button>
+    <button class="btn btn-danger mx-1">Delete</button>
+    <button class="btn btn-primary mx-1">Clear</button>
+  </div>
+</div>
