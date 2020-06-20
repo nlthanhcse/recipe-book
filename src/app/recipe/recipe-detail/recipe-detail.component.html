@@ -3,14 +3,19 @@
     <h2>{{ recipe.name }}</h2>
   </div>
   <div class="col-md-7 text-right">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
+    <div class="btn-group" appDropdown>
+      <button class="btn btn-primary dropdown-toggle"
+              >
+        Manage <span class="caret"></span>
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Edit</a>
-        <a class="dropdown-item" href="#">Delete</a>
-      </div>
+<!--      <div class="dropdown-menu">-->
+<!--        <a class="dropdown-item" href="#">Edit</a>-->
+<!--        <a class="dropdown-item" href="#">Delete</a>-->
+<!--      </div>-->
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Edit</a></li>
+        <li><a class="dropdown-item" href="#">Delete</a></li>
+      </ul>
     </div>
   </div>
 </div>
