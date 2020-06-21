@@ -8,10 +8,6 @@
               >
         Manage <span class="caret"></span>
       </button>
-<!--      <div class="dropdown-menu">-->
-<!--        <a class="dropdown-item" href="#">Edit</a>-->
-<!--        <a class="dropdown-item" href="#">Delete</a>-->
-<!--      </div>-->
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Edit</a></li>
         <li><a class="dropdown-item" href="#">Delete</a></li>
@@ -21,6 +17,9 @@
 </div>
 <hr>
 <div class="row">
+  <div class="col-md-12 text-center">
+    <img src="{{ recipe.imgPath }}" alt="" class="img-responsive" style="max-height: 300px;">
+  </div>
   <div class="col-md-12">
     <label for="description"><strong>Description</strong></label>
     <p id="description">{{ recipe.description }}</p>
