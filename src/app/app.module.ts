@@ -10,6 +10,12 @@ import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component'
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import {Route, RouterModule} from '@angular/router';
+
+const routes: Route[] = [
+  {path: 'recipe', component: RecipeComponent},
+  {path: 'shopping', component: ShoppingListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +30,11 @@ import { DropdownDirective } from './shared/dropdown.directive';
     DropdownDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
