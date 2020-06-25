@@ -9,8 +9,12 @@
         Manage <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Edit</a></li>
+        <li><a class="dropdown-item"
+               style="cursor: pointer"
+               (click)="addToShoppingListClicked(recipe.ingredients)"
+        >Add to shopping list</a></li>
         <li><a class="dropdown-item" href="#">Delete</a></li>
+        <li><a class="dropdown-item" href="#">Edit</a></li>
       </ul>
     </div>
   </div>
