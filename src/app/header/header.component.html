@@ -3,17 +3,22 @@
   <ul class="navbar-nav nav-pills mr-auto">
     <li class="nav-item">
       <a class="nav-link"
-         [ngClass]="{'active' : navLinkedActivated === 'recipe'}"
-         (click)="navLinkClicked('recipe')"
          routerLink="./recipe"
+         routerLinkActive="active"
       >Recipe</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         [ngClass]="{'active' : navLinkedActivated === 'shopping'}"
-         (click)="navLinkClicked('shopping')"
          routerLink="./shopping"
+         routerLinkActive="active"
       >Shopping</a>
     </li>
   </ul>
+  <div class="btn-group dropleft" appDropdown>
+    <button class="btn btn-default dropdown-toggle">Manage</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" style="cursor: pointer">Save data</a></li>
+      <li><a class="dropdown-item" style="cursor: pointer">Fetch data</a></li>
+    </ul>
+  </div>
 </nav>
