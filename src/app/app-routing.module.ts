@@ -11,7 +11,8 @@ const routes: Routes = [
       {path: '', component: RequireSelectRecipeComponent},
       {path: ':id', component: RecipeDetailComponent}
     ]},
-  {path: 'shopping', component: ShoppingListComponent}
+  {path: 'shopping', component: ShoppingListComponent},
+  // {path: '**', redirectTo: '/recipe'}
 ];
 
 @NgModule({
