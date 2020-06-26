@@ -14,6 +14,7 @@ import {RouterModule} from '@angular/router';
 import {ShoppingService} from './shopping-list/shopping.service';
 import {AppRoutingModule} from './app-routing.module';
 import { RequireSelectRecipeComponent } from './recipe/require-select-recipe/require-select-recipe.component';
+import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RequireSelectRecipeComponent } from './recipe/require-select-recipe/req
     RecipeItemComponent,
     HeaderComponent,
     DropdownDirective,
-    RequireSelectRecipeComponent
+    RequireSelectRecipeComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
