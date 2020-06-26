@@ -3,7 +3,7 @@
     <h2>{{ recipe.name }}</h2>
   </div>
   <div class="col-md-7 text-right">
-    <div class="btn-group" appDropdown>
+    <div class="btn-group dropleft" appDropdown>
       <button class="btn btn-primary dropdown-toggle"
       >
         Manage <span class="caret"></span>
@@ -13,8 +13,11 @@
                style="cursor: pointer"
                (click)="addToShoppingListClicked(recipe.ingredients)"
         >Add to shopping list</a></li>
+        <li><a class="dropdown-item"
+               style="cursor: pointer"
+               routerLink="edit"
+        >Edit</a></li>
         <li><a class="dropdown-item" style="cursor: pointer">Delete</a></li>
-        <li><a class="dropdown-item" style="cursor: pointer">Edit</a></li>
       </ul>
     </div>
   </div>
