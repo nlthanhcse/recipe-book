@@ -7,10 +7,4 @@ import {ShoppingService} from './shopping-list/shopping.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  navLinkClicked = 'recipe';
-
-  getRecipeClicked(navLinkClicked) {
-    this.navLinkClicked = navLinkClicked;
-  }
-
 }

@@ -6,17 +6,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() outNavLinkClicked =  new EventEmitter<string>();
-  navLinkedActivated = 'recipe';
-
   constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  navLinkClicked(navLinkName) {
-    this.navLinkedActivated = navLinkName;
-    this.outNavLinkClicked.emit(navLinkName);
   }
 }
