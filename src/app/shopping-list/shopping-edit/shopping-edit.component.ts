@@ -42,4 +42,14 @@ export class ShoppingEditComponent implements OnInit {
       this.shoppingService.updateIngredient(this.selectedIngredientIndex, newIngredient);
     }
   }
+
+  onClear() {
+    this.form.reset();
+    this.isEditMode = false;
+  }
+
+  onDelete() {
+    this.shoppingService.deleteIngredient(this.selectedIngredientIndex);
+    this.isEditMode = false;
+  }
 }

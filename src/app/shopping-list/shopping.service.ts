@@ -25,6 +25,11 @@ export class ShoppingService {
     this.ingredientsChanged.next(this.getIngredents());
   }
 
+  public deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.getIngredents());
+  }
+
   public addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
     this.ingredientsChanged.next(this.getIngredents());

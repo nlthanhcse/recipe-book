@@ -22,9 +22,14 @@
       </div>
       <div class="col-md-12 text-center">
         <button class="btn btn-success mx-1"
+                type="submit"
                 [disabled]="!f.valid">{{ !isEditMode ? 'Add' : 'Update' }}</button>
-        <button class="btn btn-danger mx-1">Delete</button>
-        <button class="btn btn-primary mx-1">Clear</button>
+        <button class="btn btn-danger mx-1"
+                type="button"
+                (click)="onDelete()">Delete</button>
+        <button class="btn btn-primary mx-1"
+                type="button"
+                (click)="onClear()">Clear</button>
       </div>
     </form>
   </div>
