@@ -1,18 +1,31 @@
 <div class="row my-1">
   <div class="col-md-12">
-    <div class="form-group">
-      <label for="name">Ingredient name</label>
-      <input type="text" id="name" class="form-control" #ingredient_name_input>
-    </div>
-    <div class="form-group">
-      <label for="amount">Ingredient amount</label>
-      <input type="text" id="amount" class="form-control" #ingredient_amount_input>
-    </div>
-  </div>
-  <div class="col-md-12 text-center">
-    <button class="btn btn-success mx-1" (click)="addIngredientClicked()">Add</button>
-    <button class="btn btn-warning mx-1">Edit</button>
-    <button class="btn btn-danger mx-1">Delete</button>
-    <button class="btn btn-primary mx-1">Clear</button>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="name">Ingredient name</label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               name="name"
+               required
+               ngModel>
+      </div>
+      <div class="form-group">
+        <label for="amount">Ingredient amount</label>
+        <input type="number"
+               id="amount"
+               class="form-control"
+               name="amount"
+               required
+               ngModel
+               pattern="^[1-9]+[0-9]*$">
+      </div>
+      <div class="col-md-12 text-center">
+        <button class="btn btn-success mx-1"
+                [disabled]="!f.valid">{{ !isEditMode ? 'Add' : 'Update' }}</button>
+        <button class="btn btn-danger mx-1">Delete</button>
+        <button class="btn btn-primary mx-1">Clear</button>
+      </div>
+    </form>
   </div>
 </div>

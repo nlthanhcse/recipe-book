@@ -7,16 +7,21 @@ export class ShoppingService {
     new Ingredient('Orange', 5)
   ];
 
-  private addIngredient = new Subject<Ingredient>();
   // khi ingredients list co su thay doi
   private ingredientsChanged = new Subject<Ingredient[]>();
+  private selectedIngredientIndex = new Subject<number>();
 
   public getIngredents() {
     return this.ingredients.slice();
   }
 
-  public getAddIngredient(ingredient: Ingredient) {
+  public addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
+    this.ingredientsChanged.next(this.getIngredents());
+  }
+
+  public updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
     this.ingredientsChanged.next(this.getIngredents());
   }
 
@@ -25,8 +30,15 @@ export class ShoppingService {
     this.ingredientsChanged.next(this.getIngredents());
   }
 
+  public getIngredient(index: number) {
+    return this.ingredients.slice(index, index + 1)[0];
+  }
+
   public getIngredientsChanged() {
     return this.ingredientsChanged;
   }
 
+  public getSelectedIngredientIndex() {
+    return this.selectedIngredientIndex;
+  }
 }

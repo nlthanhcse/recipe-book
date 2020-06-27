@@ -3,9 +3,10 @@
 <div class="row my-1">
   <div class="col-md-12">
     <div class="list-group">
-      <a href="#"
+      <a style="cursor: pointer"
          class="list-group-item list-group-item-action"
-         *ngFor="let ingredient of ingredients"
+         *ngFor="let ingredient of ingredients;let i = index"
+         (click)="onEditIngredient(i)"
       >
         <span>{{ ingredient.name }} ({{ ingredient.amount }})</span>
       </a>
