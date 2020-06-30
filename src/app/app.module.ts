@@ -16,7 +16,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { RequireSelectRecipeComponent } from './recipe/require-select-recipe/require-select-recipe.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { LoginComponent } from './login/login.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule // reactive approach
   ],
   exports: [
     RouterModule
