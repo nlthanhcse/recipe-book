@@ -2,10 +2,22 @@
 <hr>
 <div class="row my-1">
   <div class="col-md-12">
+    <div class="form-group">
+      <label for="filter">Filter</label>
+      <input type="text"
+             id="filter"
+             class="form-control"
+             [(ngModel)]="filterString">
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row my-1">
+  <div class="col-md-12">
     <div class="list-group">
       <a style="cursor: pointer"
          class="list-group-item list-group-item-action"
-         *ngFor="let ingredient of ingredients;let i = index"
+         *ngFor="let ingredient of ingredients | filter:filterString:'name';let i = index"
          (click)="onEditIngredient(i)"
       >
         <span>{{ ingredient.name }} ({{ ingredient.amount }})</span>

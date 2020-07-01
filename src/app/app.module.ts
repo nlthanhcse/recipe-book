@@ -18,6 +18,7 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RecipeService} from './recipe/recipe.service';
+import { FilterPipe } from './shopping-list/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {RecipeService} from './recipe/recipe.service';
     DropdownDirective,
     RequireSelectRecipeComponent,
     RecipeEditComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

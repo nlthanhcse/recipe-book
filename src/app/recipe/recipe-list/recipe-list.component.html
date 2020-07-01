@@ -1,6 +1,17 @@
 <div class="list-group">
+  <div class="row my-1">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="filter">Filter</label>
+        <input type="text"
+               id="filter"
+               class="form-control"
+               [(ngModel)]="filterString">
+      </div>
+    </div>
+  </div>
   <app-recipe-item
-  *ngFor="let recipeEle of recipes; let i = index"
+  *ngFor="let recipeEle of recipes | filter:filterString:'name'; let i = index"
   [recipe]="recipeEle"
   [index]="i"
   >
