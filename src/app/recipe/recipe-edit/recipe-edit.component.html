@@ -62,7 +62,8 @@
                 </div>
                 <div class="col-md-2">
                   <button class="btn btn-danger w-100"
-                          type="button">X
+                          type="button"
+                          (click)="deleteIngredient(i)">X
                   </button>
                 </div>
               </div>
@@ -80,8 +81,11 @@
       </div>
       <div class="row">
         <div class="col-md-12 text-right my-1">
-          <button class="btn btn-success" type="submit">Save</button>
-          <button class="btn btn-danger mx-1" type="button">Cancel</button>
+          <button class="btn btn-success"
+                  type="submit">Save</button>
+          <button class="btn btn-danger mx-1"
+                  type="button"
+                  (click)="cancel()">Cancel</button>
         </div>
       </div>
     </form>
