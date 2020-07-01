@@ -19,13 +19,14 @@
             <input type="text"
                    id="img"
                    formControlName="imgPath"
-                   class="form-control">
+                   class="form-control"
+                   #imgPath>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <img src="">
+        <div class="col-md-12 text-center">
+          <img [src]="imgPath.value" style="max-height: 200px;">
         </div>
       </div>
       <div class="row">

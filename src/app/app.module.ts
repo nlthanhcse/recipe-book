@@ -17,6 +17,7 @@ import { RequireSelectRecipeComponent } from './recipe/require-select-recipe/req
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RecipeService} from './recipe/recipe.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule
   ],
   providers: [
-    ShoppingService
+    ShoppingService,
+    RecipeService
   ],
   bootstrap: [AppComponent]
 })
