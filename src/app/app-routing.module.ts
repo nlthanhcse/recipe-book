@@ -6,14 +6,15 @@ import {RequireSelectRecipeComponent} from './recipe/require-select-recipe/requi
 import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
 import {RecipeEditComponent} from './recipe/recipe-edit/recipe-edit.component';
 import {LoginComponent} from './login/login.component';
+import {RecipesResolverService} from './recipe/recipes-resolver.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent, pathMatch: 'full'}, // pathMatch: 'full' means only redirect when the url is fully empty
   {path: 'recipe', component: RecipeComponent, children: [
       {path: '', component: RequireSelectRecipeComponent},
       {path: 'new', component: RecipeEditComponent},
-      {path: ':id', component: RecipeDetailComponent},
-      {path: ':id/edit', component: RecipeEditComponent},
+      {path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService]},
+      {path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService]},
     ]},
   {path: 'shopping', component: ShoppingListComponent},
   // {path: '**', redirectTo: '/recipe'}

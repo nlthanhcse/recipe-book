@@ -10,10 +10,13 @@
       </div>
     </div>
   </div>
-  <app-recipe-item
-  *ngFor="let recipeEle of recipes | filter:filterString:'name'; let i = index"
-  [recipe]="recipeEle"
-  [index]="i"
-  >
-  </app-recipe-item>
+ <div *ngIf="!this.getIsFetching();else isFetching">
+   <app-recipe-item
+     *ngFor="let recipeEle of recipes | filter:filterString:'name'; let i = index"
+     [recipe]="recipeEle"
+     [index]="i"
+   >
+   </app-recipe-item>
+ </div>
+  <ng-template #isFetching><p class="text-warning">Loading data...</p></ng-template>
 </div>

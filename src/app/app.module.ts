@@ -13,12 +13,15 @@ import {DropdownDirective} from './shared/dropdown.directive';
 import {RouterModule} from '@angular/router';
 import {ShoppingService} from './shopping-list/shopping.service';
 import {AppRoutingModule} from './app-routing.module';
-import { RequireSelectRecipeComponent } from './recipe/require-select-recipe/require-select-recipe.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-import { LoginComponent } from './login/login.component';
+import {RequireSelectRecipeComponent} from './recipe/require-select-recipe/require-select-recipe.component';
+import {RecipeEditComponent} from './recipe/recipe-edit/recipe-edit.component';
+import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RecipeService} from './recipe/recipe.service';
-import { FilterPipe } from './shopping-list/filter.pipe';
+import {FilterPipe} from './shopping-list/filter.pipe';
+import {HttpClientModule} from '@angular/common/http';
+import {DataStorageService} from './shared/data-storage.service';
+import {RecipesResolverService} from './recipe/recipes-resolver.service';
 
 @NgModule({
   declarations: [
@@ -40,14 +43,17 @@ import { FilterPipe } from './shopping-list/filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule // reactive approach
+    ReactiveFormsModule, // reactive approach
+    HttpClientModule
   ],
   exports: [
     RouterModule
   ],
   providers: [
     ShoppingService,
-    RecipeService
+    RecipeService,
+    DataStorageService,
+    RecipesResolverService
   ],
   bootstrap: [AppComponent]
 })

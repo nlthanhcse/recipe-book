@@ -17,8 +17,8 @@
   <div class="btn-group dropleft" appDropdown>
     <button class="btn btn-default dropdown-toggle">Manage</button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" style="cursor: pointer">Save data</a></li>
-      <li><a class="dropdown-item" style="cursor: pointer">Fetch data</a></li>
+      <li><a class="dropdown-item" style="cursor: pointer" (click)="saveData()">Save data</a></li>
+      <li><a class="dropdown-item" style="cursor: pointer" (click)="fetchData()">Fetch data</a></li>
     </ul>
   </div>
 </nav>
