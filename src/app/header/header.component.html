@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <a href="#" class="navbar-brand">Recipe</a>
   <ul class="navbar-nav nav-pills mr-auto">
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="this.getIsAuthenticated()">
       <a class="nav-link"
          routerLink="./recipe"
          routerLinkActive="active"
@@ -13,16 +13,19 @@
          routerLinkActive="active"
       >Shopping</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!this.getIsAuthenticated()">
       <a class="nav-link"
          routerLink="./auth"
          routerLinkActive="active"
       >Authenticate</a>
     </li>
   </ul>
+  <div class="btn-group">
+    <button class="btn btn-default" *ngIf="this.getIsAuthenticated()">Logout</button>
+  </div>
   <div class="btn-group dropleft" appDropdown>
     <button class="btn btn-default dropdown-toggle">Manage</button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" *ngIf="this.getIsAuthenticated()">
       <li><a class="dropdown-item" style="cursor: pointer" (click)="saveData()">Save data</a></li>
       <li><a class="dropdown-item" style="cursor: pointer" (click)="fetchData()">Fetch data</a></li>
     </ul>

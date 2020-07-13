@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../shared/auth.service';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   isProcessing = false;
   error = null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -34,23 +37,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     const email = this.authForm.value.email;
     const password = this.authForm.value.password;
-    this.authService.signUp(email, password)
-      .subscribe(
-        responseData => {
-          console.log(responseData);
-          this.isProcessing = false;
-        },
-        responseError => {
-          this.error = responseError.error.error.message;
-          switch (this.error) {
-            case 'EMAIL_EXISTS':
-              this.error = 'This email already exists!';
-              break;
-          }
-          console.log(responseError);
-          this.isProcessing = false;
-        }
-      );
+
+    let authen: Observable<any>;
+    if (this.isSignIn) {
+      authen = this.authService.signIn(email, password);
+    } else {
+      authen = this.authService.signUp(email, password);
+    }
+
+    authen.subscribe(
+      responseData => {
+        console.log(responseData);
+        this.isProcessing = false;
+        this.router.navigate(['../recipe']);
+      },
+      responseError => {
+        console.log(responseError);
+        this.error = responseError;
+        this.isProcessing = false;
+      }
+    );
   }
 
   public switch() {
