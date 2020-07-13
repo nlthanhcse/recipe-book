@@ -21,7 +21,7 @@
     </li>
   </ul>
   <div class="btn-group">
-    <button class="btn btn-default" *ngIf="this.getIsAuthenticated()">Logout</button>
+    <button class="btn btn-default" *ngIf="this.getIsAuthenticated()" (click)="signOut()">Logout</button>
   </div>
   <div class="btn-group dropleft" appDropdown>
     <button class="btn btn-default dropdown-toggle">Manage</button>
