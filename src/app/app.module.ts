@@ -19,11 +19,12 @@ import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RecipeService} from './recipe/recipe.service';
 import {FilterPipe} from './shopping-list/filter.pipe';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {DataStorageService} from './shared/data-storage.service';
 import {RecipesResolverService} from './recipe/recipes-resolver.service';
 import {LoaderComponent} from './shared/loader.component';
 import {AuthService} from './shared/auth.service';
+import {AuthInterceptorService} from './shared/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {AuthService} from './shared/auth.service';
     RecipeService,
     DataStorageService,
     RecipesResolverService,
-    AuthService
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

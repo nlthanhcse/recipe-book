@@ -26,26 +26,20 @@ export class DataStorageService {
 
   public fetchData() {
     // tslint:disable-next-line:max-line-length
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap(user => { // exhaustMap chờ pipe x r nó thực hiện và thay thế user observerble bằng observerble nội hàm của nó
-        return this.httpClient
-          .get<Recipe[]>(
-            'https://recipe-book-ec09c.firebaseio.com/recipes.json',
-            {
-              params: new HttpParams().set('auth', user.token)
-            }
-          );
-      }),
-      map(recipes => {
-        return recipes.map(recipe => {
-          return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
-        });
-      }),
-      tap(recipes => {
-        this.recipeService.setRecipes(recipes);
-        this.fetched.next(false);
-      }));
+    // exhaustMap chờ pipe x r nó thực hiện và thay thế user observerble bằng observerble nội hàm của nó
+    return this.httpClient
+      .get<Recipe[]>(
+        'https://recipe-book-ec09c.firebaseio.com/recipes.json',
+      ).pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
+          });
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes);
+          this.fetched.next(false);
+        }));
   }
 
   public getFetched() {
