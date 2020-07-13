@@ -3,9 +3,9 @@ export class User {
     public email: string,
     public id: string,
     // tslint:disable-next-line:variable-name
-    private _token: string,
+    public _token: string,
     // tslint:disable-next-line:variable-name
-    private _tokenExpirationDate: Date
+    public _tokenExpirationDate: Date
   ) {
   }
 

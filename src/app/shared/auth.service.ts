@@ -17,6 +17,7 @@ interface ResponsePayload {
 @Injectable()
 export class AuthService {
   user = new BehaviorSubject<User>(null);
+  private autoSignOutTimer = null;
 
   constructor(private httpClient: HttpClient,
               private router: Router) {
@@ -65,7 +66,42 @@ export class AuthService {
 
   public signOut() {
     this.user.next(null);
+    localStorage.removeItem('user');
+    if (this.autoSignOutTimer) {
+      clearTimeout(this.autoSignOutTimer);
+    }
     this.router.navigate(['/auth']);
+  }
+
+  public autoSigIn() {
+    const userFromLocalStorage: {
+      email: string,
+      id: string,
+      // tslint:disable-next-line:variable-name
+      _token: string,
+      // tslint:disable-next-line:variable-name
+      _tokenExpirationDate: string
+    } = JSON.parse(localStorage.getItem('user'));
+
+    if (userFromLocalStorage) {
+      const loadedUser = new User(userFromLocalStorage.email,
+        userFromLocalStorage.id, userFromLocalStorage._token,
+        new Date(userFromLocalStorage._tokenExpirationDate));
+      this.user.next(loadedUser);
+      this.autoSignOut(loadedUser._tokenExpirationDate.getTime() - new Date().getTime());
+      this.router.navigate(['/recipe']);
+    }
+  }
+
+  public autoSignOut(expirationDate: number) {
+    this.autoSignOutTimer = setTimeout(
+      () => {
+        this.signOut();
+      }, expirationDate);
+  }
+
+  public saveUserToLocalStorage(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   private handleAuthentication(
@@ -76,6 +112,8 @@ export class AuthService {
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+    this.saveUserToLocalStorage(user);
+    this.autoSignOut(expiresIn * 1000);
     this.user.next(user);
   }
 
