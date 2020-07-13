@@ -22,6 +22,8 @@ import {FilterPipe} from './shopping-list/filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {DataStorageService} from './shared/data-storage.service';
 import {RecipesResolverService} from './recipe/recipes-resolver.service';
+import {LoaderComponent} from './shared/loader.component';
+import {AuthService} from './shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {RecipesResolverService} from './recipe/recipes-resolver.service';
     RequireSelectRecipeComponent,
     RecipeEditComponent,
     LoginComponent,
+    LoaderComponent,
     FilterPipe
   ],
   imports: [
@@ -53,7 +56,8 @@ import {RecipesResolverService} from './recipe/recipes-resolver.service';
     ShoppingService,
     RecipeService,
     DataStorageService,
-    RecipesResolverService
+    RecipesResolverService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

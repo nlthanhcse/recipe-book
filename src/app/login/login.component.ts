@@ -7,13 +7,20 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('loginForm') loginForm: NgForm;
+  @ViewChild('authForm') authForm: NgForm;
+  isSignIn = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public login() {
-    console.log(this.loginForm);
+  public submit() {
+    const email = this.authForm.value.email;
+    const password = this.authForm.value.password;
+
+  }
+
+  public switch() {
+    this.isSignIn = !this.isSignIn;
   }
 }
