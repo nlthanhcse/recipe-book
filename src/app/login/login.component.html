@@ -1,4 +1,7 @@
-<form (ngSubmit)="submit()" #authForm="ngForm" class="col-md-6 offset-3"> <!--"ngFrom will prevent the form from submit to the server"-->
+<div *ngIf="isProcessing" class="text-center">
+  <app-loader></app-loader>
+</div>
+<form (ngSubmit)="submit()" #authForm="ngForm" class="col-md-6 offset-3" *ngIf="!isProcessing"> <!--"ngFrom will prevent the form from submit to the server"-->
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text"
