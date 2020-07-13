@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../shared/auth.service';
 
@@ -7,15 +7,24 @@ import {AuthService} from '../shared/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('authForm') authForm: NgForm;
   isSignIn = false;
   isProcessing = false;
+  error = null;
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
+
+  }
+
+  ngAfterViewInit() {
+  }
+
+  onChanges() {
+    this.error = null;
   }
 
   public submit() {
@@ -31,8 +40,14 @@ export class LoginComponent implements OnInit {
           console.log(responseData);
           this.isProcessing = false;
         },
-        error => {
-          console.log(error);
+        responseError => {
+          this.error = responseError.error.error.message;
+          switch (this.error) {
+            case 'EMAIL_EXISTS':
+              this.error = 'This email already exists!';
+              break;
+          }
+          console.log(responseError);
           this.isProcessing = false;
         }
       );

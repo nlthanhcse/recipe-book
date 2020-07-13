@@ -1,7 +1,11 @@
 <div *ngIf="isProcessing" class="text-center">
   <app-loader></app-loader>
 </div>
-<form (ngSubmit)="submit()" #authForm="ngForm" class="col-md-6 offset-3" *ngIf="!isProcessing"> <!--"ngFrom will prevent the form from submit to the server"-->
+
+<div class="alert alert-danger text-center" role="alert" *ngIf="error">
+  {{ error }}
+</div>
+<form (ngSubmit)="submit()" (keypress)="onChanges()" #authForm="ngForm" class="col-md-6 offset-3" *ngIf="!isProcessing"> <!--"ngFrom will prevent the form from submit to the server"-->
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text"
@@ -11,7 +15,8 @@
            ngModel
            email
            required
-           #emailInput="ngModel">
+           #emailInput="ngModel"
+           >
   </div>
   <div class="form-group">
     <label for="password">Password</label>
@@ -20,7 +25,8 @@
            class="form-control"
            name="password"
            ngModel
-           required>
+           required
+           >
     <span class="help-block text-center"
           *ngIf="!emailInput.valid && emailInput.touched">Please input a valid email!</span>
   </div>

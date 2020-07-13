@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ShoppingService} from '../shopping.service';
 import {NgForm} from '@angular/forms';
 import {Ingredient} from '../../shared/ingredient.model';
